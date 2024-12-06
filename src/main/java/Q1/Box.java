@@ -1,4 +1,4 @@
-package org.example;
+package Q1;
 
 public class Box implements IMeasurableContainer{
     private double width;
@@ -6,7 +6,7 @@ public class Box implements IMeasurableContainer{
     private double depth;
     private double length;
 
-    public Box(double width, double height, double depth, double length) {
+    public Box(double width, double weight, double depth, double length) {
         this.width = width;
         this.weight = weight;
         this.depth = depth;

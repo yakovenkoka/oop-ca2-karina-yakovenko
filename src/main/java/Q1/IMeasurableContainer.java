@@ -1,4 +1,4 @@
-package org.example;
+package Q1;
 
 public interface IMeasurableContainer {
     double weight();

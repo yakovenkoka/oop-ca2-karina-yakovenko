@@ -1,4 +1,4 @@
-package org.example;
+package Q1;
 
 public class Pyramid implements IMeasurableContainer{
     private double length;
