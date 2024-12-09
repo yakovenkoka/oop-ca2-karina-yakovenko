@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class AirportFlights {
 
+    //create two queues to store the flights for takeoff and landing
     Queue<String> takeOffQueue = new LinkedList<>();
     Queue<String> landingQueue = new LinkedList<>();
 
@@ -13,6 +14,7 @@ public class AirportFlights {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            //display the available commands
             displayChoices();
 
             System.out.println("Enter command: ");
@@ -25,30 +27,40 @@ public class AirportFlights {
 
             processCommand(command);
 
+            //display the current state of the queues
             displayQueues("\nTakeoff Queue", takeOffQueue);
             displayQueues("\nLanding Queue", landingQueue);
         }
     }
 
+    //method to process the user command
     public void processCommand(String command) {
+        //split the command into parts
         String[] commandParts = command.split(" ", 2);
+        //get the action part of the command
         String action = commandParts[0].toLowerCase();
 
+
         if (action.equals("takeoff")) {
+            //handle the "takeoff" command
             if (commandParts.length < 2) {
                 System.out.println("\nFlight number is missing. Enter a valid command (e.g. takeoff Flight-100)");
+                return;
             } else {
                 takeOffQueue.add(commandParts[1]);
                 System.out.println(commandParts[1] + " is added to the takeoff queue");
             }
         } else if (action.equals("land")) {
+            //handle the "land" command
             if (commandParts.length < 2) {
                 System.out.println("\nFlight number is missing. Enter a valid command (e.g. land Flight-200)");
+                return;
             } else {
                 landingQueue.add(commandParts[1]);
                 System.out.println(commandParts[1] + " is added to the landing queue");
             }
         } else if (action.equals("next")) {
+            //handle the "next" command
             if (!landingQueue.isEmpty()) {
                 System.out.println("Processing " + landingQueue.remove() + " from landing queue.");
             } else if (!takeOffQueue.isEmpty()) {
@@ -77,7 +89,7 @@ public class AirportFlights {
         } else {
             System.out.println(queue);
         }
-        
+
         if (!queue.isEmpty()) {
             for (String flight : queue) {
                 System.out.println(" - " + flight);
